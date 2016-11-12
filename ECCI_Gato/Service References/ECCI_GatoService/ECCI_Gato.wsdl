@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:ECCI_Gato" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="ECCI_Gato" targetNamespace="urn:ECCI_Gato" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <xsd:schema targetNamespace="urn:ECCI_Gato">
+      <xsd:complexType name="MatrixOfStrings">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[][]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfStrings">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="terminadoIn" />
+  <wsdl:message name="terminadoOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="juegoTerminadoIn" />
+  <wsdl:message name="juegoTerminadoOut">
+    <wsdl:part name="return" type="xsd:integer" />
+  </wsdl:message>
+  <wsdl:message name="tableroActualIn" />
+  <wsdl:message name="tableroActualOut">
+    <wsdl:part name="return" type="xsd:MatrixOfStrings" />
+  </wsdl:message>
+  <wsdl:message name="moverIn">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="moverOut" />
+  <wsdl:message name="insertarJugadorBDIn">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="insertarJugadorBDOut" />
+  <wsdl:message name="diezMejoresIn" />
+  <wsdl:message name="diezMejoresOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="jugadorActualIn" />
+  <wsdl:message name="jugadorActualOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="ECCI_GatoPort">
+    <wsdl:operation name="terminado">
+      <documentation>Gato::terminado() Devuelve </documentation>
+      <wsdl:input message="tns:terminadoIn" />
+      <wsdl:output message="tns:terminadoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="juegoTerminado">
+      <documentation>Gato::juegoTerminado() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:juegoTerminadoIn" />
+      <wsdl:output message="tns:juegoTerminadoOut" />
+    </wsdl:operation>
+    <wsdl:operation name="tableroActual">
+      <documentation>Gato::tableroActual() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:tableroActualIn" />
+      <wsdl:output message="tns:tableroActualOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mover">
+      <documentation>Gato::mover() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:moverIn" />
+      <wsdl:output message="tns:moverOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarJugadorBD">
+      <documentation>Gato::insertarJugadorBD() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:insertarJugadorBDIn" />
+      <wsdl:output message="tns:insertarJugadorBDOut" />
+    </wsdl:operation>
+    <wsdl:operation name="diezMejores">
+      <documentation>Gato::diezMejores() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:diezMejoresIn" />
+      <wsdl:output message="tns:diezMejoresOut" />
+    </wsdl:operation>
+    <wsdl:operation name="jugadorActual">
+      <documentation>Gato::jugadorActual() Devuelve el saludo guardado en la propiedad ultimo_saludo.</documentation>
+      <wsdl:input message="tns:jugadorActualIn" />
+      <wsdl:output message="tns:jugadorActualOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ECCI_GatoBinding" type="tns:ECCI_GatoPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="terminado">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#terminado" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="juegoTerminado">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#juegoTerminado" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tableroActual">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#tableroActual" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mover">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#mover" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarJugadorBD">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#insertarJugadorBD" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="diezMejores">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#diezMejores" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="jugadorActual">
+      <soap:operation soapAction="urn:ECCI_Gato#Gato#jugadorActual" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:ECCI_Gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ECCI_GatoService">
+    <wsdl:port name="ECCI_GatoPort" binding="tns:ECCI_GatoBinding">
+      <soap:address location="http://titanic.ecci.ucr.ac.cr:80/~eb30721/gato/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
